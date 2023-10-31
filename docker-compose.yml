@@ -27,9 +27,9 @@ services:
         # depends_on:
         #     - r1r3-django
         ports:
-            - 8080:8080
+            - 8081:8081
         expose:
-            - 8080
+            - 8081
         volumes:
             - ./docker/web/nginx.conf:/etc/nginx/conf.d/r1r3.conf
         environment:
