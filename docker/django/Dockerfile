@@ -5,9 +5,6 @@ env pythonumbuffered=1
 workdir /backend
 copy ./backend/requirements.txt requirements.txt
 
-run python -m venv env
-run python -m venv env
-run env\Scripts\activate
 run pip install -r requirements.txt
 run python manage.py migrate
 run python manage.py runserver 0.0.0.0:8000
