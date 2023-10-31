@@ -1,6 +1,8 @@
 import os.path
 from pathlib import Path
 
+from config.docker import DATABASE_TYPE, DATABASE_HOST, DATABASE_PORT, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME
+
 OLD_PASSWORD_FIELD_ENABLED = True
 
 REST_AUTH_SERIALIZERS = {
@@ -132,22 +134,34 @@ WSGI_APPLICATION = 'django_core.wsgi.application'
 #         'NAME': 'defaultdb',
 #         'USER': 'postgres',
 #         'PASSWORD': 'postgres*5432',
-#         'HOST': '170.64.153.247',
+#         'HOST': '170.64.173.74',
 #         'PORT': '5432',
 #     }
 # }
+if DATABASE_TYPE == "POSTGRESQL":
+    # Mysql数据库
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "HOST": DATABASE_HOST,
+            "PORT": DATABASE_PORT,
+            "USER": DATABASE_USER,
+            "PASSWORD": DATABASE_PASSWORD,
+            "NAME": DATABASE_NAME,
+        }
+    }
 
 # Local database
-DATABASES = {
-    'default': {
-		    'ENGINE': 'django.db.backends.postgresql',
-				'NAME': 'defaultdb',
-				'USER': 'postgres',
-				'PASSWORD': '1',
-		    'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+# 		    'ENGINE': 'django.db.backends.postgresql',
+# 				'NAME': 'defaultdb',
+# 				'USER': 'postgres',
+# 				'PASSWORD': '1',
+# 		    'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
