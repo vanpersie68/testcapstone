@@ -1,13 +1,13 @@
 version: "3"
 
 services:
-    R1R3-django:
+    r1r3-django:
         build:
             context: .
             dockerfile: ./docker/django/Dockerfile
-        container_name: R1R3-django
+        container_name: r1r3-django
         # depends_on:
-        #     - R1R3-potgresql
+        #     - r1r3-potgresql
         environment:
             TZ: Asia/Shanghai
         ports:
@@ -19,28 +19,28 @@ services:
             network:
                 ipv4_address: 177.8.0.12
 
-    R1R3-web:
-        container_name: R1R3-web
+    r1r3-web:
+        container_name: r1r3-web
         build:
             context: ./
             dockerfile: ./docker/web/Dockerfile
         # depends_on:
-        #     - R1R3-django
+        #     - r1r3-django
         ports:
             - 8080:8080
         expose:
             - 8080
         volumes:
-            - ./docker/web/nginx.conf:/etc/nginx/conf.d/R1R3.conf
+            - ./docker/web/nginx.conf:/etc/nginx/conf.d/r1r3.conf
         environment:
             TZ: Asia/Shanghai
         networks:
             network:
                 ipv4_address: 177.8.0.11
 
-    # R1R3-potgresql:
+    # r1r3-potgresql:
     #     image: postgresql:10
-    #     container_name: R1R3-potgresql
+    #     container_name: r1r3-potgresql
     #     restart: always
     #     ports:
     #         - 54320:5432
@@ -48,7 +48,7 @@ services:
     #         - 5432
     #     environment:
     #         MYSQL_ROOT_PASSWORD: "root"
-    #         MYSQL_DATABASE: "R1R3"
+    #         MYSQL_DATABASE: "r1r3"
     #         TZ: Asia/Shanghai
     #     volumes:
     #         - potgresql:/var/lib/potgresql
