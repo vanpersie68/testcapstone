@@ -11,4 +11,5 @@ run pip install daphne
 
 copy ./backend .
 
-cmd ["daphne", "-b", "0.0.0.0", "-p", "8000", "django_core.asgi:application"]
+# cmd ["daphne", "-b", "0.0.0.0", "-p", "8000", "django_core.asgi:application"]
+cmd ["0.0.0.0", "-p", "8000", "django_core.asgi:application"]
