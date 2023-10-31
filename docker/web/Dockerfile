@@ -20,7 +20,7 @@ FROM node:16
 WORKDIR /web
 
 # 复制 package.json 和 package-lock.json 文件到容器
-COPY /web/package.json /web/package-lock.json
+COPY web/package.json web/package-lock.json
 
 # 使用 --legacy-peer-deps 安装依赖
 RUN npm install --legacy-peer-deps
